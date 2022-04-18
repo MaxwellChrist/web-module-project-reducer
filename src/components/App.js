@@ -6,7 +6,7 @@ import CalcButton from './CalcButton';
 import { addOne, ADD_ONE, 
          applyNumber, APPLY_NUMBER, 
          changeOperation, CHANGE_OPERATION,
-
+         clearDisplay, CLEAR_DISPLAY
        } from '../actions';
 
 function App() {
@@ -19,6 +19,10 @@ function App() {
 
   const handleChange = (operator) => {
     dispatch(changeOperation(operator))
+  }
+
+  const handleClear = () => {
+    dispatch(clearDisplay())
   }
 
   return (
@@ -62,13 +66,13 @@ function App() {
             </div>
 
             <div className="row">
-              <CalcButton value={"+"} onClick={() => handleChange("+")} />
+              <CalcButton value={"+"} onClick={() => handleChange("+")}/>
               <CalcButton value={"*"} onClick={() => handleChange("*")}/>
               <CalcButton value={"-"} onClick={() => handleChange("-")}/>
             </div>
 
             <div className="row ce_button">
-              <CalcButton value={"CE"}/>
+              <CalcButton value={"CE"} onClick={() => handleClear()}/>
             </div>
 
           </form>

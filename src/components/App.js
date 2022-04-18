@@ -6,7 +6,10 @@ import CalcButton from './CalcButton';
 import { addOne, ADD_ONE, 
          applyNumber, APPLY_NUMBER, 
          changeOperation, CHANGE_OPERATION,
-         clearDisplay, CLEAR_DISPLAY
+         clearDisplay, CLEAR_DISPLAY,
+         setMemory, SET_MEMORY,
+         changeTotal, CHANGE_TOTAL,
+         clearMemory, CLEAR_MEMORY,
        } from '../actions';
 
 function App() {
@@ -25,6 +28,19 @@ function App() {
     dispatch(clearDisplay())
   }
 
+  const handleSetMemory = () => {
+    dispatch(setMemory())
+  }
+
+  const handleChangeTotal = () => {
+    dispatch(changeTotal())
+  }
+
+  const handleClearMemory = () => {
+    dispatch(clearMemory())
+  }
+
+
   return (
     <div className="App">
       <nav className="navbar navbar-dark bg-dark">
@@ -42,9 +58,10 @@ function App() {
             </div>
             
             <div className="row">
-              <CalcButton value={"M+"}/>
-              <CalcButton value={"MR"}/>
-              <CalcButton value={"MC"}/>
+              <CalcButton value={"M+"} onClick = {handleSetMemory} />
+              <CalcButton value={"MR"} onClick = {handleChangeTotal} />
+              <CalcButton value={"MC"} onClick= {handleClearMemory} />
+
             </div>
 
             <div className="row">
